@@ -13,8 +13,8 @@ public class EmployeeMapper {
                 employee.getPhysical_Address(),
                 employee.getIdNo(),
                 employee.getStatus(),
-                employee.getPosition()
-
+                employee.getPosition(),
+                employee.getGender()
         );
     }
     public static Employee mapToEmployee(EmployeeDto employeeDto){
@@ -26,9 +26,8 @@ public class EmployeeMapper {
                 employeeDto.getPhysical_Address(),
                 employeeDto.getIdNo(),
                 employeeDto.getStatus(),
-                employeeDto.getPosition()
-
-
+                employeeDto.getPosition(),
+                employeeDto.getGender()
         );
     }
 }

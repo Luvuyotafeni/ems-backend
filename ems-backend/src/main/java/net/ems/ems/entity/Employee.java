@@ -31,12 +31,15 @@ public class Employee {
     private String Physical_Address;
 
     @Column(name = "IdNo", unique = true)
-    private int IdNo;
+    private String  IdNo;
 
     @Column(name= "Status")
     private String status;
 
     @Column(name = "Position")
     private String position;
+
+    @Column(name = "Gender")
+    private String gender;
 
 }
