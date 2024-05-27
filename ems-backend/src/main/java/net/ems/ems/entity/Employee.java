@@ -26,4 +26,14 @@ public class Employee {
 
     @Column(name = "email", nullable = false , unique = true)
     private String email;
+
+    @Column(name = "Physical_Address")
+    private String Physical_Address;
+
+    @Column(name = "IdNo", unique = true)
+    private int IdNo;
+
+    @Column(name= "Status")
+    private String status;
+
 }
