@@ -18,5 +18,6 @@ public class EmployeeDto {
     private String Physical_Address;
     private int IdNo;
     private String status;
+    private String position;
     
 }

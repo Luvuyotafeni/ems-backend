@@ -12,7 +12,8 @@ public class EmployeeMapper {
                 employee.getEmail(),
                 employee.getPhysical_Address(),
                 employee.getIdNo(),
-                employee.getStatus()
+                employee.getStatus(),
+                employee.getPosition()
 
         );
     }
@@ -24,7 +25,8 @@ public class EmployeeMapper {
                 employeeDto.getEmail(),
                 employeeDto.getPhysical_Address(),
                 employeeDto.getIdNo(),
-                employeeDto.getStatus()
+                employeeDto.getStatus(),
+                employeeDto.getPosition()
 
 
         );
