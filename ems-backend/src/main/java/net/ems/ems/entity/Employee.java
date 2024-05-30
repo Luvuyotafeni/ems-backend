@@ -18,20 +18,20 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "IdNo", unique = true)
+    private String  IdNo;
+
     @Column(name = "first_name")
-    private String firstName;
+    private String FirstName;
 
     @Column(name = "last_Name")
-    private String lastName;
+    private String LastName;
 
     @Column(name = "email", nullable = false , unique = true)
     private String email;
 
-    @Column(name = "Physical_Address")
-    private String Physical_Address;
-
-    @Column(name = "IdNo", unique = true)
-    private String  IdNo;
+    @Column(name = "Gender")
+    private String gender;
 
     @Column(name= "Status")
     private String status;
@@ -39,7 +39,7 @@ public class Employee {
     @Column(name = "Position")
     private String position;
 
-    @Column(name = "Gender")
-    private String gender;
+    @Column(name = "Physical_Address")
+    private String PhysicalAddress;
 
 }

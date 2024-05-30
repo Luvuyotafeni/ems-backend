@@ -7,27 +7,29 @@ public class EmployeeMapper {
     public static EmployeeDto mapToEmployeeDto(Employee employee){
         return new EmployeeDto(
                 employee.getId(),
+                employee.getIdNo(),
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getEmail(),
-                employee.getPhysical_Address(),
-                employee.getIdNo(),
+                employee.getGender(),
                 employee.getStatus(),
                 employee.getPosition(),
-                employee.getGender()
+                employee.getPhysicalAddress()
+
         );
     }
     public static Employee mapToEmployee(EmployeeDto employeeDto){
         return  new Employee(
                 employeeDto.getId(),
-                employeeDto.getFirst_name(),
-                employeeDto.getLast_name(),
-                employeeDto.getEmail(),
-                employeeDto.getPhysical_Address(),
                 employeeDto.getIdNo(),
-                employeeDto.getStatus(),
+                employeeDto.getFirstName(),
+                employeeDto.getLastName(),
+                employeeDto.getEmail(),
+                employeeDto.getGender(),
                 employeeDto.getPosition(),
-                employeeDto.getGender()
+                employeeDto.getStatus(),
+                employeeDto.getPhysicalAddress()
+
         );
     }
 }

@@ -1,6 +1,7 @@
 package net.ems.ems.controller;
 
 
+import lombok.AllArgsConstructor;
 import net.ems.ems.dto.EmployeeDto;
 import net.ems.ems.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -32,7 +35,7 @@ public class EmployeeController {
     // Build Get All employees rest API
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getALlEmployees(){
-        List<EmployeeDto> employees = employeeService.getAllEMployees();
+        List<EmployeeDto> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
 

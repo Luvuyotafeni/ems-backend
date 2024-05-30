@@ -12,13 +12,13 @@ import lombok.Setter;
 
 public class EmployeeDto {
     private Long id;
-    private String first_name;
-    private String Last_name;
-    private String Gender;
-    private String email;
-    private String Physical_Address;
     private String IdNo;
-    private String status;
+    private String FirstName;
+    private String LastName;
+    private String email;
+    private String Gender;
     private String position;
+    private String status;
+    private String PhysicalAddress;
     
 }
