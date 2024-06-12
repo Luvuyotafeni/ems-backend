@@ -50,8 +50,8 @@ public class EmployeeController {
 
     // Build a Delete employee REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable Long employeeId){
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
         employeeService.deleteEmployee(employeeId);
-        return ResponseEntity.ok("Employee deleted Successfully");
+        return ResponseEntity.ok("Employee deleted successfully");
     }
 }
