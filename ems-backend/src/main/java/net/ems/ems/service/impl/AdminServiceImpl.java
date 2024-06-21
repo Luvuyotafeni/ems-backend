@@ -3,6 +3,7 @@ package net.ems.ems.service.impl;
 import lombok.AllArgsConstructor;
 import net.ems.ems.dto.AdminDto;
 import net.ems.ems.entity.Admin;
+import net.ems.ems.exception.ResourceNotFoundException;
 import net.ems.ems.mapper.AdminMapper;
 import net.ems.ems.repository.AdminRepository;
 import net.ems.ems.service.AdminService;
@@ -25,4 +26,10 @@ public class AdminServiceImpl implements AdminService {
         return AdminMapper.mapToAdminDto(savedAdmin);
     }
 
+    @Override
+    public AdminDto getAdminById(Long adminId){
+        Admin admin = adminRepository.findById(adminId)
+                .orElseThrow(() -> new ResourceNotFoundException("Admin not found with id:" + adminId));
+        return AdminMapper.mapToAdminDto(admin);
+    }
 }
