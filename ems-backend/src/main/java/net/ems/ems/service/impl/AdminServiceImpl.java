@@ -10,6 +10,8 @@ import net.ems.ems.service.AdminService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class AdminServiceImpl implements AdminService {
@@ -32,4 +34,20 @@ public class AdminServiceImpl implements AdminService {
                 .orElseThrow(() -> new ResourceNotFoundException("Admin not found with id:" + adminId));
         return AdminMapper.mapToAdminDto(admin);
     }
+
+    @Override
+    public List<AdminDto> getAllAdmin() {
+        return List.of();
+    }
+
+    @Override
+    public AdminDto updateAdmin(Long adminId, AdminDto updateAdmin) {
+        return null;
+    }
+
+    @Override
+    public void deleteAdmin(Long adminId) {
+
+    }
+
 }
