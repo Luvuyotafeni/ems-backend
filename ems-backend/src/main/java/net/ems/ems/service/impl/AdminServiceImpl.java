@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -37,17 +38,27 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<AdminDto> getAllAdmin() {
-        return List.of();
+        List<Admin> admins = adminRepository.findAll();
+        return admins.stream().map(AdminMapper::mapToAdminDto).collect(Collectors.toList());
     }
 
     @Override
     public AdminDto updateAdmin(Long adminId, AdminDto updateAdmin) {
-        return null;
+        Admin admin = adminRepository.findById(adminId)
+                .orElseThrow(() -> new ResourceNotFoundException("Admin not found with id:"+adminId));
+        admin.setFirstName(updateAdmin.getAdmin_Name());
+        admin.setLastName(updateAdmin.getAdmin_LastName());
+        admin.setEmail(updateAdmin.getAdmin_Email());
+        admin.setPassword(passwordEncoder.encode(updateAdmin.getAdmin_Password()));
+        Admin updateAdminEntity = adminRepository.save(admin);
+        return AdminMapper.mapToAdminDto(updateAdminEntity);
     }
 
     @Override
     public void deleteAdmin(Long adminId) {
-
+        Admin admin = adminRepository.findById(adminId)
+                .orElseThrow(() -> new ResourceNotFoundException("Admin not found with Id:"+adminId));
+        adminRepository.delete(admin);
     }
 
 }
