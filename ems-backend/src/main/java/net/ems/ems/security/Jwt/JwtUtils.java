@@ -1,7 +1,6 @@
 package net.ems.ems.security.Jwt;
 
 import io.jsonwebtoken.*;
-//import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,7 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    @Value("${ems.app.jwtSecret}")
+   @Value("${ems.app.jwtSecret}")
     private String jwtSecret;
 
     @Value("${ems.app.jwtExpirationMs}")
