@@ -1,9 +1,12 @@
 package net.ems.ems.security.Jwt;
-import lombok.Value;
+
+import io.jsonwebtoken.*;
+//import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
+import java.security.SignatureException;
 import java.util.Date;
 
 @Slf4j
@@ -28,5 +31,16 @@ public class JwtUtils {
     public String getUserNameFromJwtToken(String token){
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
+
+    public boolean validateJwtToken(String authToken){
+        try{
+            jwts.parser().setSigningKey(jwtSecret).parseClamsJws(authToken);
+            return true;
+        } catch (SignatureException | MalformedJwtException | ExpiredJwtException | IllegalArgumentException e){
+            log.error("JWT validation error: {}", e.getMessage());
+        }
+        return false;
+    }
+
 
 }
