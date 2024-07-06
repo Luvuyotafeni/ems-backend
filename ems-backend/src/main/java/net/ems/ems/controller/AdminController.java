@@ -4,7 +4,6 @@ package net.ems.ems.controller;
 import lombok.AllArgsConstructor;
 import net.ems.ems.dto.AdminDto;
 import net.ems.ems.service.AdminService;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +44,9 @@ public class AdminController {
         return ResponseEntity.ok(updateAdmin);
     }
 
-
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteAdmin(@PathVariable("id") Long adminId){
+        adminService.deleteAdmin(adminId);
+        return ResponseEntity.ok("admin successfully deleted");
+    }
 }
