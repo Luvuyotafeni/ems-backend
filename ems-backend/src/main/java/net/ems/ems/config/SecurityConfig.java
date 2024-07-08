@@ -10,48 +10,49 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
 
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
+
     private final AuthTokenFilter authTokenFilter;
 
-    @Override
-    public void configure (AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
-
-    }
-
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return authenticationManagerBean();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+        http.csrf().disable()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/emplpoyees/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.cors().and().csrf().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/auth/**")
-                .antMatchers(HttpMethod.GET,"/api/employees/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer(){
+        return (web)-> web.ignoring().antMacthers("/resources/**");
     }
 
-
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return  customUserDetailsService;
+    }
 }
