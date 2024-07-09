@@ -12,7 +12,7 @@
 	<artifactId>ems-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ems-backend</name>
-	<description>Project for employee management syste</description>
+	<description>Project for employee management system</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
