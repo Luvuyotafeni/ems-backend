@@ -1,5 +1,5 @@
 package net.ems.ems.config;
-
+/*
 import lombok.AllArgsConstructor;
 import net.ems.ems.security.Jwt.AuthTokenFilter;
 import net.ems.ems.service.impl.CustomUserDetailsService;
@@ -52,13 +52,14 @@ public class SecurityConfig {
         return http.build();
     }
 
-   /* @Bean
+   @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
         return (web)-> web.ignoring().antMatchers("/resources/**");
-    }*/
+    }
 
     @Bean
     public UserDetailsService userDetailsService(){
         return  customUserDetailsService;
     }
 }
+*/

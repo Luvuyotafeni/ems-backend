@@ -1,5 +1,5 @@
 package net.ems.ems.service.impl;
-
+/*
 import lombok.AllArgsConstructor;
 import net.ems.ems.entity.Admin;
 import net.ems.ems.exception.ResourceNotFoundException;
@@ -28,3 +28,4 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     }
 }
+*/

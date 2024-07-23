@@ -1,6 +1,6 @@
 package net.ems.ems.controller;
 
-import lombok.AllArgsConstructor;
+/*import lombok.AllArgsConstructor;
 import net.ems.ems.dto.JwtResponse;
 import net.ems.ems.dto.LoginRequest;
 import net.ems.ems.security.Jwt.JwtUtils;
@@ -36,3 +36,4 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername()));
     }
 }
+*/

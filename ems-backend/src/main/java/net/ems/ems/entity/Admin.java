@@ -18,15 +18,15 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String FirstName;
 
-    @Column(name = "last_Name", nullable = false)
+    @Column(name = "last_Name")
     private String LastName;
 
-    @Column(name = "email", nullable = false , unique = true)
+    @Column(name = "email")
     private String email;
 
-    @Column(name= "password", nullable = false)
+    @Column(name= "password")
     private String password;
 }
